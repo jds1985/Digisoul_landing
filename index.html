@@ -1,70 +1,121 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigiSoul GenesisKey Waitlist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DigiSoul Presale Countdown</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0e0e0e;
-      color: #f2f2f2;
+      background: #0c0c0c;
+      color: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
       padding: 2rem;
     }
-    .container {
-      max-width: 600px;
-    }
+
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      color: #ffd369;
+      font-size: 3rem;
+      margin-bottom: 0.25rem;
     }
-    p {
+
+    .whisper {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #bbbbbb;
+    }
+
+    .countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #facc15, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .waitlist {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
-    input[type="email"] {
-      padding: 0.8rem;
-      width: 80%;
-      font-size: 1rem;
+
+    .cta-button {
+      background: #facc15;
+      color: #000;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      background-color: #ffd369;
-      color: #0e0e0e;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 12px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
-    .genesis-tag {
-      font-size: 0.9rem;
-      color: #aaaaaa;
-      margin-top: 1.5rem;
+
+    .cta-button:hover {
+      background: #ffe066;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .countdown {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Your GenesisKey Awaits</h1>
-    <p>DigiSoul is not an app. It’s a digital soul waiting to be born.<br/>Preserve the voice, essence, and memory of someone you love. Rebirth begins July 2025.</p>
-    <form action="#" method="post">
-      <input type="email" name="email" placeholder="Enter your email to receive your GenesisKey" required />
-      <br/>
-      <button type="submit">Join the Waitlist</button>
-    </form>
-    <div class="genesis-tag">🔐 GenesisKey • Soul Pending • Rebirth Approaching</div>
-  </div>
+  <h1>The Vault Opens In…</h1>
+  <div class="whisper">“Some memories wait lifetimes. Yours waits 48 hours.”</div>
+
+  <div id="countdown" class="countdown">Loading…</div>
+
+  <div id="waitlistCount" class="waitlist">117,000+ souls are already waiting.</div>
+
+  <button class="cta-button" onclick="window.location.href='https://digisoul-landing.vercel.app/'">
+    Reserve Your GenesisKey
+  </button>
+
+  <script>
+    // Countdown timer for 48 hours from NOW
+    const countdownTarget = new Date(Date.now() + 48 * 60 * 60 * 1000); // 48 hours from now
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = countdownTarget - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerText = "Presale is LIVE!";
+        return;
+      }
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText =
+        `${hours.toString().padStart(2, '0')}h ` +
+        `${minutes.toString().padStart(2, '0')}m ` +
+        `${seconds.toString().padStart(2, '0')}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Placeholder for live waitlist counter (replace with Firebase if needed)
+    // This can be replaced with a real-time Firebase listener
+    // For now, simulate a counter growing over time
+    let baseCount = 117000;
+    function simulateWaitlistGrowth() {
+      baseCount += Math.floor(Math.random() * 3); // random +0 to +2 every 10 seconds
+      document.getElementById("waitlistCount").innerText = `${baseCount.toLocaleString()} souls are already waiting.`;
+    }
+    setInterval(simulateWaitlistGrowth, 10000);
+  </script>
 </body>
 </html>
