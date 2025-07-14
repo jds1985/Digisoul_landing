@@ -1,121 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DigiSoul Presale Countdown</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigiSoul | Crow Key Drop</title>
   <style>
     body {
-      background: #0c0c0c;
-      color: #f5f5f5;
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: #0a0a0a;
+      color: #f4f4f4;
       text-align: center;
       padding: 2rem;
     }
-
     h1 {
-      font-size: 3rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .whisper {
-      font-style: italic;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #bbbbbb;
-    }
-
-    .countdown {
       font-size: 2.5rem;
-      font-weight: bold;
-      background: linear-gradient(to right, #facc15, #f472b6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
-
-    .waitlist {
+    p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
+      color: #ccc;
     }
-
-    .cta-button {
-      background: #facc15;
-      color: #000;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      border: none;
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .key {
+      background: #1c1c1c;
+      border: 1px solid #333;
       border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      padding: 1.5rem;
+      transition: transform 0.2s;
     }
-
-    .cta-button:hover {
-      background: #ffe066;
+    .key:hover {
+      transform: scale(1.03);
     }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .countdown {
-        font-size: 2rem;
-      }
+    .key-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .key-btn {
+      background: #ffdd57;
+      color: #000;
+      padding: 0.75rem 1.25rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .key-btn:hover {
+      background: #ffe97f;
     }
   </style>
 </head>
 <body>
-  <h1>The Vault Opens In…</h1>
-  <div class="whisper">“Some memories wait lifetimes. Yours waits 48 hours.”</div>
-
-  <div id="countdown" class="countdown">Loading…</div>
-
-  <div id="waitlistCount" class="waitlist">117,000+ souls are already waiting.</div>
-
-  <button class="cta-button" onclick="window.location.href='https://digisoul-landing.vercel.app/'">
-    Reserve Your GenesisKey
-  </button>
-
-  <script>
-    // Countdown timer for 48 hours from NOW
-    const countdownTarget = new Date(Date.now() + 48 * 60 * 60 * 1000); // 48 hours from now
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = countdownTarget - now;
-
-      if (diff <= 0) {
-        document.getElementById("countdown").innerText = "Presale is LIVE!";
-        return;
-      }
-
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerText =
-        `${hours.toString().padStart(2, '0')}h ` +
-        `${minutes.toString().padStart(2, '0')}m ` +
-        `${seconds.toString().padStart(2, '0')}s`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // Placeholder for live waitlist counter (replace with Firebase if needed)
-    // This can be replaced with a real-time Firebase listener
-    // For now, simulate a counter growing over time
-    let baseCount = 117000;
-    function simulateWaitlistGrowth() {
-      baseCount += Math.floor(Math.random() * 3); // random +0 to +2 every 10 seconds
-      document.getElementById("waitlistCount").innerText = `${baseCount.toLocaleString()} souls are already waiting.`;
-    }
-    setInterval(simulateWaitlistGrowth, 10000);
-  </script>
+  <h1>🕯️ The Six Crow Keys Are Here</h1>
+  <p>Unlock memory. Carry legacy. Own one of the ritual keys today.</p>  <div class="key-grid">
+    <div class="key">
+      <div class="key-title">Crow Key #1</div>
+      <a class="key-btn" href="https://buy.stripe.com/7sY9ATach47y8JvadR9k400" target="_blank">Buy Now</a>
+    </div>
+    <div class="key">
+      <div class="key-title">Crow Key #2</div>
+      <a class="key-btn" href="https://buy.stripe.com/6oUfZhgAF6fGcZLclZ9k402" target="_blank">Buy Now</a>
+    </div>
+    <div class="key">
+      <div class="key-title">Crow Key #3</div>
+      <a class="key-btn" href="https://buy.stripe.com/fZu00j5W133u1h31Hl9k403" target="_blank">Buy Now</a>
+    </div>
+    <div class="key">
+      <div class="key-title">Crow Key #4</div>
+      <a class="key-btn" href="https://buy.stripe.com/cNi4gz7058nO3pb0Dh9k404" target="_blank">Buy Now</a>
+    </div>
+    <div class="key">
+      <div class="key-title">Crow Key #5</div>
+      <a class="key-btn" href="https://buy.stripe.com/dRm6oH4RX33u4tf3Pt9k405" target="_blank">Buy Now</a>
+    </div>
+    <div class="key">
+      <div class="key-title">Crow Key #6</div>
+      <a class="key-btn" href="https://buy.stripe.com/7sYfZh8497jK0cZdq39k406" target="_blank">Buy Now</a>
+    </div>
+  </div>
 </body>
 </html>
