@@ -1,103 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DigiSoul</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(to bottom right, #2b0033, #24002c);
-        color: #ffffff;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        padding: 2rem;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DigiSoul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #2c003e, #1a0033);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-      .logo {
-        width: 100px;
-        margin-bottom: 1.5rem;
-        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
-      }
+    .soulmist {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
+      animation: mistFlow 20s linear infinite;
+      z-index: -1;
+    }
 
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin: 0.5rem 0;
-      }
+    @keyframes mistFlow {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
 
-      .tagline {
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
-      }
+    h1 {
+      font-size: 2.8em;
+      margin: 60px 0 10px 0;
+    }
 
-      p {
-        max-width: 600px;
-        margin: 1rem auto 2rem;
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #e5e5e5;
-      }
+    .taglines {
+      font-size: 1.2em;
+      font-weight: bold;
+      min-height: 1.5em;
+      margin-bottom: 24px;
+    }
 
-      .waitlist-btn {
-        background: #ffffff;
-        color: #2b0033;
-        font-weight: bold;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 30px;
-        font-size: 1rem;
-        cursor: pointer;
-        text-decoration: none;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-        transition: background 0.3s ease;
-      }
+    .description {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
 
-      .waitlist-btn:hover {
-        background: #eeeeee;
-      }
+    .waitlist-button {
+      background-color: white;
+      color: #4a0072;
+      padding: 14px 28px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0 10px #8e44ad;
+      margin-bottom: 40px;
+    }
 
-      footer {
-        margin-top: auto;
-        font-size: 0.8rem;
-        color: #cccccc;
-      }
-    </style>
-  </head>
+    .countdown {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
 
-  <body>
-    <!-- Embedded DigiSoul Logo (Base64) -->
-    <img
-      class="logo"
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAIAAADZF8uwAAAACXBIWXMAAAsSAAALEgHS3X78AAACmUlEQVR4nO2aQQ6DIBAFV4R//1/qH3oYojMlCyxPtqVN1EFVX0w3w4YAAAAAAAAAAAAAAAAAADgng5S1t+qP0z3LMJZTT8vaRVlKL0V9Ree2j0qTUEA8n8i+pBlzDZaWb97Cl94I7eEAGG/AqFTayev9eGAMjHwWOBUFDPLhBqK7F0uyGYtYDAA5RoJ9xdTNVsHYCwsnUL0+pxIWvAW3tYqNqxnkWEmND1i+2gxzpAFpc7qXY+oGKhvuRkuMK9Ck/YD8Vbc9cEqxYAK+9EitADTDntoWgbS5PYkIjbr/9HUYGVZdEmLb+U1tLL9+c0zXiiyjN3esqybsvSmQdACrHcN41OlF9PSp1GCBTT1mvErE8fR5HkZ9BBV9jCEUQjGEdRhGEdxhGEdxhGEdxhGEdxNNXRLre/PjzvVeKN47R5RhGEdxhGEdxhGEdxhGEdxhGHce0tdoP03L30GgAAAAAAAAAAAAAAAAAA4FYfAlQIzb7JS1mpAAAAAElFTkSuQmCC"
-      alt="DigiSoul Logo"
-    />
+    footer {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
 
-    <h1>DigiSoul</h1>
-    <div class="tagline">Rebuilding connection. One soul at a time.</div>
+    .audiocontrol {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ffffff33;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="soulmist"></div>
 
-    <p>
-      We’re building the next evolution of memory — where legacy becomes
-      digital, emotion becomes presence, and you are never truly gone.
-    </p>
+  <h1>DigiSoul</h1>
+  <div class="taglines" id="tagline">Rebuilding connection. One soul at a time.</div>
 
-    <a
-      class="waitlist-btn"
-      href="https://formspree.io/f/xdkzrvbz"
-      target="_blank"
-      >Join the Waitlist</a
-    >
+  <p class="description">
+    We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
+  </p>
 
-    <footer>© 2025 DigiSoul. All rights reserved.</footer>
-  </body>
-</html>
+  <a href="https://formspree.io/f/xdkzrvbz" class="waitlist-button">Join the Waitlist</a>
+
+  <div class="countdown" id="countdown">Launching in: ...</div>
+
+  <footer>
+    <p>&copy; 2025 DigiSoul. All rights reserved.</p>
+  </footer>
+
+  <div class="audiocontrol" onclick="toggleAudio()">🔊 Toggle Sound</div>
+  <audio id="bg-audio" loop autoplay>
+    <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_7e32c436df.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const taglines = [
+      "Rebuilding connection. One soul
