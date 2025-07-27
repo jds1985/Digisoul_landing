@@ -3,115 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DigiSoul</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <title>DigiSoul Landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #2c003e, #1a0033);
+      background: linear-gradient(145deg, #230033, #40004d);
       color: white;
-      text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
-    .soulmist {
+    .overlay, .mist, .pulse {
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
-      animation: mistFlow 20s linear infinite;
+      width: 100%;
+      height: 100%;
       z-index: -1;
     }
 
-    @keyframes mistFlow {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
+    .mist {
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+      animation: floatMist 20s linear infinite;
     }
 
-    h1 {
-      font-size: 2.8em;
-      margin: 60px 0 10px 0;
+    @keyframes floatMist {
+      0% { transform: translateX(0%) translateY(0%); }
+      50% { transform: translateX(3%) translateY(-3%); }
+      100% { transform: translateX(0%) translateY(0%); }
     }
 
-    .taglines {
-      font-size: 1.2em;
-      font-weight: bold;
-      min-height: 1.5em;
-      margin-bottom: 24px;
+    .pulse {
+      background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 80%);
+      animation: pulseGlow 5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      height: 1.5rem;
+      animation: fadeInOut 12s infinite;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      10%, 90% { opacity: 1; }
     }
 
     .description {
       max-width: 600px;
-      margin: 0 auto 30px;
-      font-size: 1.1em;
-      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
-    .waitlist-button {
-      background-color: white;
-      color: #4a0072;
-      padding: 14px 28px;
-      font-size: 1em;
+    .btn {
+      background: white;
+      color: #40004d;
+      padding: 0.8rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1rem;
       border: none;
-      border-radius: 25px;
       cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 0 10px #8e44ad;
-      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
     }
 
     .countdown {
-      font-size: 1.5em;
-      margin-top: 20px;
+      margin-top: 2rem;
+      font-size: 1.25rem;
     }
 
-    footer {
-      font-size: 0.9em;
-      color: #aaa;
-      margin-bottom: 30px;
+    .footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
     }
 
-    .audiocontrol {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ffffff33;
-      padding: 8px 12px;
-      border-radius: 12px;
+    .sound-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
       cursor: pointer;
-      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <div class="soulmist"></div>
+  <div class="mist"></div>
+  <div class="pulse"></div>
 
-  <h1>DigiSoul</h1>
-  <div class="taglines" id="tagline">Rebuilding connection. One soul at a time.</div>
+  <button class="sound-toggle" onclick="toggleSound()">🔇 Toggle Sound</button>
 
-  <p class="description">
-    We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
-  </p>
+  <div class="container">
+    <div class="title">DigiSoul</div>
+    <div class="tagline" id="tagline">Rebuilding connection. One soul at a time.</div>
+    <div class="description">
+      We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
+    </div>
+    <a href="https://formspree.io/f/xdkzrvbz" target="_blank">
+      <button class="btn">Join the Waitlist</button>
+    </a>
+    <div class="countdown" id="countdown">Launching in: ...</div>
+  </div>
 
-  <a href="https://formspree.io/f/xdkzrvbz" class="waitlist-button">Join the Waitlist</a>
-
-  <div class="countdown" id="countdown">Launching in: ...</div>
-
-  <footer>
-    <p>&copy; 2025 DigiSoul. All rights reserved.</p>
-  </footer>
-
-  <div class="audiocontrol" onclick="toggleAudio()">🔊 Toggle Sound</div>
-  <audio id="bg-audio" loop autoplay>
-    <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_7e32c436df.mp3" type="audio/mpeg">
-  </audio>
+  <div class="footer">© 2025 DigiSoul. All rights reserved.</div>
 
   <script>
     const taglines = [
-      "Rebuilding connection. One soul
+      "Rebuilding connection. One soul at a time.",
+      "Where memory breathes again.",
+      "Because you were never truly gone."
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % taglines.length;
+      document.getElementById('tagline').textContent = taglines[index];
+    }, 4000);
+
+    const launchDate = new Date("September 1, 2025 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = launchDate - now;
+      if (diff <= 0) {
+        countdownEl.textContent = "We’ve launched!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      countdownEl.textContent = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    let soundOn = false;
+    function toggleSound() {
+      soundOn = !soundOn;
+      const btn = document.querySelector(".sound-toggle");
+      btn.textContent = soundOn ? "🔊 Toggle Sound" : "🔇 Toggle Sound";
+      // Placeholder: integrate audio player here later
+    }
+  </script>
+</body>
+</html>
