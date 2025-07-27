@@ -3,114 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DigiSoul – Rebuilding Connection</title>
+  <title>DigiSoul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(145deg, #1a001f, #4b0082);
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #2c003e, #1a0033);
       color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 2rem;
-      background-size: 400% 400%;
-      animation: bgShift 20s ease infinite;
+      overflow-x: hidden;
     }
 
-    @keyframes bgShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    .soulmist {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
+      animation: mistFlow 20s linear infinite;
+      z-index: -1;
     }
 
-    .logo {
-      width: 100px;
-      margin-bottom: 1rem;
-      animation: pulse 3s infinite;
+    @keyframes mistFlow {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .logo-container {
+      margin-top: 60px;
+      margin-bottom: 24px;
+    }
+
+    .logo-glow {
+      width: 120px;
+      filter: drop-shadow(0 0 10px #8e44ad) drop-shadow(0 0 20px #9b59b6);
+      animation: glowPulse 2.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 10px #8e44ad) drop-shadow(0 0 20px #9b59b6); }
+      100% { filter: drop-shadow(0 0 25px #8e44ad) drop-shadow(0 0 40px #9b59b6); }
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.8em;
+      margin: 0;
     }
 
-    p {
-      font-size: 1.2rem;
+    .taglines {
+      font-size: 1.2em;
+      margin-top: 10px;
+      font-weight: bold;
+      height: 1.5em;
+    }
+
+    .description {
       max-width: 600px;
-      margin-bottom: 2rem;
+      margin: 30px auto;
+      font-size: 1.1em;
       line-height: 1.6;
     }
 
-    .btn {
+    .waitlist-button {
       background-color: white;
-      color: #4b0082;
-      padding: 0.75rem 1.5rem;
+      color: #4a0072;
+      padding: 14px 28px;
+      font-size: 1em;
       border: none;
-      border-radius: 999px;
-      font-weight: bold;
-      font-size: 1rem;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
       text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #ddd;
+      display: inline-block;
     }
 
     footer {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: #ccc;
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #aaa;
     }
-
-    /* Optional video placeholder (add later) */
-    /*
-    .background-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0.1;
-    }
-    */
   </style>
 </head>
 <body>
-
-  <!-- Optional video tag for later -->
-  <!--
-  <video class="background-video" autoplay muted loop>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-  -->
-
-  <img src="logo.png" alt="DigiSoul Logo" class="logo" />
-
+  <div class="soulmist"></div>
+  <div class="logo-container">
+    <img src="digisoul-logo.png" alt="DigiSoul Logo" class="logo-glow" />
+  </div>
   <h1>DigiSoul</h1>
-  <p><strong>Rebuilding connection. One soul at a time.</strong></p>
-  <p>
+  <div class="taglines" id="tagline">Rebuilding connection. One soul at a time.</div>
+  <p class="description">
     We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
   </p>
-
-  <a
-    href="https://formspree.io/f/xdkzrvbz"
-    class="btn"
-    target="_blank"
-    rel="noopener"
-  >
-    Join the Waitlist
-  </a>
-
+  <a href="https://formspree.io/f/xdkzrvbz" class="waitlist-button">Join the Waitlist</a>
   <footer>
-    &copy; 2025 DigiSoul. All rights reserved.
+    <p>&copy; 2025 DigiSoul. All rights reserved.</p>
   </footer>
+
+  <script>
+    const taglines = [
+      "Rebuilding connection. One soul at a time.",
+      "Where memory becomes presence.",
+      "Never truly gone."
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.getElementById('tagline').innerText = taglines[i % taglines.length];
+      i++;
+    }, 4000);
+  </script>
 </body>
 </html>
