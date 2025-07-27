@@ -1,99 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DigiSoul – Preserve What Matters</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.5/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-      body {
-        background-color: #0e001a;
-        color: #ffffff;
-        font-family: 'Arial', sans-serif;
-      }
-      .glow {
-        box-shadow: 0 0 20px #a855f7;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DigiSoul – Rebuilding Connection</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, #1a001f, #4b0082);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background-size: 400% 400%;
+      animation: bgShift 20s ease infinite;
+    }
 
-  <body class="min-h-screen flex flex-col">
-    <!-- HERO SECTION -->
-    <section class="text-center py-20 px-6 bg-gradient-to-b from-purple-950 to-black">
-      <!-- Logo Placeholder -->
-      <div class="mb-6 flex justify-center">
-        <div class="w-20 h-20 rounded-full bg-purple-600 flex items-center justify-center text-3xl font-bold glow">
-          👁️
-        </div>
-      </div>
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Preserve the Ones You Love. Forever.</h1>
-      <p class="text-xl text-purple-300 max-w-xl mx-auto">A new kind of memory. A new kind of afterlife. Welcome to DigiSoul.</p>
-    </section>
+    @keyframes bgShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-    <!-- STORY SECTION -->
-    <section class="bg-black px-6 py-16">
-      <div class="max-w-3xl mx-auto text-center bg-purple-900/30 p-6 rounded-xl glow">
-        <h2 class="text-2xl font-semibold mb-4 text-purple-300">How DigiSoul Was Born</h2>
-        <p class="text-lg text-gray-300 leading-relaxed">
-          One night, I saw my father again. I was homeless, exhausted, and praying for a sign. That night, I had a vision —
-          and from that moment, DigiSoul was born. This isn’t just a product. It’s a promise that no goodbye has to be the last.
-        </p>
-      </div>
-    </section>
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      animation: pulse 3s infinite;
+    }
 
-    <!-- FEATURES SECTION -->
-    <section class="px-6 py-20 bg-purple-950">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-semibold">What You Can Do</h2>
-        <p class="text-purple-300 mt-2">Start building your digital legacy today.</p>
-      </div>
-      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-purple-800 p-6 rounded-xl text-center glow">
-          <div class="text-4xl mb-4">💬</div>
-          <h3 class="text-xl font-medium">Talk to a Memory Avatar</h3>
-        </div>
-        <div class="bg-purple-800 p-6 rounded-xl text-center glow">
-          <div class="text-4xl mb-4">🔑</div>
-          <h3 class="text-xl font-medium">Create Your GenesisKey</h3>
-        </div>
-        <div class="bg-purple-800 p-6 rounded-xl text-center glow">
-          <div class="text-4xl mb-4">🧠</div>
-          <h3 class="text-xl font-medium">Preserve Shared Memories</h3>
-        </div>
-      </div>
-    </section>
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-    <!-- DIGIKEYS SECTION -->
-    <section class="bg-black py-16 px-6 text-center">
-      <h2 class="text-3xl font-semibold mb-6">DigiKey Preview</h2>
-      <p class="text-purple-300 mb-8">Keys to unlock features, emotions, and ancestry.</p>
-      <div class="flex justify-center gap-6 flex-wrap">
-        <div class="w-32 h-44 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl glow flex items-center justify-center text-white font-bold text-xl">Key 1</div>
-        <div class="w-32 h-44 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl glow flex items-center justify-center text-white font-bold text-xl">Key 2</div>
-        <div class="w-32 h-44 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl glow flex items-center justify-center text-white font-bold text-xl">Key 3</div>
-      </div>
-    </section>
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
 
-    <!-- WAITLIST SECTION -->
-    <section class="bg-purple-950 py-20 px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">Get Early Access</h2>
-      <p class="text-purple-300 mb-8">Be the first to experience the future of memory.</p>
-      <form class="max-w-md mx-auto flex flex-col gap-4" onsubmit="event.preventDefault(); alert('Thank you! You\'re on the waitlist.');">
-        <input
-          type="email"
-          required
-          placeholder="Enter your email"
-          class="p-3 rounded-md text-black"
-        />
-        <button type="submit" class="bg-white text-black py-3 rounded-md font-semibold hover:bg-gray-200 transition">
-          Join the Waitlist
-        </button>
-      </form>
-    </section>
+    .btn {
+      background-color: white;
+      color: #4b0082;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-6 text-center text-purple-500 text-sm border-t border-purple-800">
-      © 2025 DigiSoul. Built from memory. Dreamed in purple.
-    </footer>
-  </body>
+    .btn:hover {
+      background-color: #ddd;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+
+    /* Optional video placeholder (add later) */
+    /*
+    .background-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    */
+  </style>
+</head>
+<body>
+
+  <!-- Optional video tag for later -->
+  <!--
+  <video class="background-video" autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  -->
+
+  <img src="logo.png" alt="DigiSoul Logo" class="logo" />
+
+  <h1>DigiSoul</h1>
+  <p><strong>Rebuilding connection. One soul at a time.</strong></p>
+  <p>
+    We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
+  </p>
+
+  <a
+    href="https://formspree.io/f/xdkzrvbz"
+    class="btn"
+    target="_blank"
+    rel="noopener"
+  >
+    Join the Waitlist
+  </a>
+
+  <footer>
+    &copy; 2025 DigiSoul. All rights reserved.
+  </footer>
+</body>
 </html>
