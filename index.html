@@ -4,180 +4,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DigiSoul Landing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #230033, #40004d);
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #240046, #3c096c);
       color: white;
-      overflow: hidden;
-    }
-
-    .overlay, .mist, .pulse {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .mist {
-      background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
-      animation: floatMist 20s linear infinite;
-    }
-
-    @keyframes floatMist {
-      0% { transform: translateX(0%) translateY(0%); }
-      50% { transform: translateX(3%) translateY(-3%); }
-      100% { transform: translateX(0%) translateY(0%); }
-    }
-
-    .pulse {
-      background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 80%);
-      animation: pulseGlow 5s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.7; }
-    }
-
-    .container {
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 1;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    .title {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
     }
 
-    .tagline {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      height: 1.5rem;
-      animation: fadeInOut 12s infinite;
+    p.tagline {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 1em;
     }
 
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0; }
-      10%, 90% { opacity: 1; }
+    p.description {
+      max-width: 500px;
+      margin: 0 auto 2em;
+      font-size: 1em;
+      line-height: 1.5;
     }
 
-    .description {
-      max-width: 600px;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-
-    .btn {
-      background: white;
-      color: #40004d;
-      padding: 0.8rem 2rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 1rem;
+    .waitlist-button {
+      background-color: white;
+      color: #3c096c;
       border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
+      margin-bottom: 2em;
+      transition: background-color 0.3s;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
+    .waitlist-button:hover {
+      background-color: #f0f0f0;
     }
 
-    .countdown {
-      margin-top: 2rem;
-      font-size: 1.25rem;
+    #countdown {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 2em;
     }
 
     .footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.85rem;
+      margin-top: auto;
+      font-size: 0.9em;
       opacity: 0.7;
     }
 
     .sound-toggle {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      top: 15px;
+      right: 15px;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 10px;
+      border-radius: 8px;
       cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .waitlist-button {
+        padding: 12px 24px;
+        font-size: 0.95em;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="mist"></div>
-  <div class="pulse"></div>
 
-  <button class="sound-toggle" onclick="toggleSound()">🔇 Toggle Sound</button>
+  <div class="sound-toggle" onclick="toggleSound()">🔇 Toggle Sound</div>
 
-  <div class="container">
-    <div class="title">DigiSoul</div>
-    <div class="tagline" id="tagline">Rebuilding connection. One soul at a time.</div>
-    <div class="description">
-      We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
-    </div>
-    <a href="https://formspree.io/f/xdkzrvbz" target="_blank">
-      <button class="btn">Join the Waitlist</button>
-    </a>
-    <div class="countdown" id="countdown">Launching in: ...</div>
-  </div>
+  <h1>DigiSoul</h1>
+  <p class="tagline">Rebuilding connection. One soul at a time.</p>
+  <p class="description">
+    We’re building the next evolution of memory — where legacy becomes digital,
+    emotion becomes presence, and you are never truly gone.
+  </p>
+
+  <form action="https://formspree.io/f/xdkzrvbz" method="POST">
+    <button class="waitlist-button" type="submit">Join the Waitlist</button>
+  </form>
+
+  <div id="countdown">Launching in: ...</div>
 
   <div class="footer">© 2025 DigiSoul. All rights reserved.</div>
 
+  <!-- Optional audio -->
+  <audio id="bg-audio" loop>
+    <source src="your-audio.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
   <script>
-    const taglines = [
-      "Rebuilding connection. One soul at a time.",
-      "Where memory breathes again.",
-      "Because you were never truly gone."
-    ];
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % taglines.length;
-      document.getElementById('tagline').textContent = taglines[index];
-    }, 4000);
-
-    const launchDate = new Date("September 1, 2025 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = launchDate - now;
-      if (diff <= 0) {
-        countdownEl.textContent = "We’ve launched!";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      countdownEl.textContent = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-
-    let soundOn = false;
     function toggleSound() {
-      soundOn = !soundOn;
-      const btn = document.querySelector(".sound-toggle");
-      btn.textContent = soundOn ? "🔊 Toggle Sound" : "🔇 Toggle Sound";
-      // Placeholder: integrate audio player here later
+      const audio = document.getElementById('bg-audio');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
+
+    // Optional Countdown Setup (placeholder only)
+    // Replace this with real date logic later
+    const countdownEl = document.getElementById('countdown');
+    countdownEl.innerText = "Launching in: 30 days";
   </script>
+
 </body>
 </html>
