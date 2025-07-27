@@ -1,119 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DigiSoul</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #2c003e, #1a0033);
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigiSoul</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to bottom right, #2b0033, #24002c);
+        color: #ffffff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 2rem;
+      }
 
-    .soulmist {
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%);
-      animation: mistFlow 20s linear infinite;
-      z-index: -1;
-    }
+      .logo {
+        width: 100px;
+        margin-bottom: 1.5rem;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+      }
 
-    @keyframes mistFlow {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0.5rem 0;
+      }
 
-    .logo-container {
-      margin-top: 60px;
-      margin-bottom: 24px;
-    }
+      .tagline {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
 
-    .logo-glow {
-      width: 120px;
-      filter: drop-shadow(0 0 10px #8e44ad) drop-shadow(0 0 20px #9b59b6);
-      animation: glowPulse 2.5s infinite alternate ease-in-out;
-    }
+      p {
+        max-width: 600px;
+        margin: 1rem auto 2rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #e5e5e5;
+      }
 
-    @keyframes glowPulse {
-      0% { filter: drop-shadow(0 0 10px #8e44ad) drop-shadow(0 0 20px #9b59b6); }
-      100% { filter: drop-shadow(0 0 25px #8e44ad) drop-shadow(0 0 40px #9b59b6); }
-    }
+      .waitlist-btn {
+        background: #ffffff;
+        color: #2b0033;
+        font-weight: bold;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        transition: background 0.3s ease;
+      }
 
-    h1 {
-      font-size: 2.8em;
-      margin: 0;
-    }
+      .waitlist-btn:hover {
+        background: #eeeeee;
+      }
 
-    .taglines {
-      font-size: 1.2em;
-      margin-top: 10px;
-      font-weight: bold;
-      height: 1.5em;
-    }
+      footer {
+        margin-top: auto;
+        font-size: 0.8rem;
+        color: #cccccc;
+      }
+    </style>
+  </head>
 
-    .description {
-      max-width: 600px;
-      margin: 30px auto;
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
+  <body>
+    <!-- Embedded DigiSoul Logo (Base64) -->
+    <img
+      class="logo"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAIAAADZF8uwAAAACXBIWXMAAAsSAAALEgHS3X78AAACmUlEQVR4nO2aQQ6DIBAFV4R//1/qH3oYojMlCyxPtqVN1EFVX0w3w4YAAAAAAAAAAAAAAAAAADgng5S1t+qP0z3LMJZTT8vaRVlKL0V9Ree2j0qTUEA8n8i+pBlzDZaWb97Cl94I7eEAGG/AqFTayev9eGAMjHwWOBUFDPLhBqK7F0uyGYtYDAA5RoJ9xdTNVsHYCwsnUL0+pxIWvAW3tYqNqxnkWEmND1i+2gxzpAFpc7qXY+oGKhvuRkuMK9Ck/YD8Vbc9cEqxYAK+9EitADTDntoWgbS5PYkIjbr/9HUYGVZdEmLb+U1tLL9+c0zXiiyjN3esqybsvSmQdACrHcN41OlF9PSp1GCBTT1mvErE8fR5HkZ9BBV9jCEUQjGEdRhGEdxhGEdxhGEdxhGEdxNNXRLre/PjzvVeKN47R5RhGEdxhGEdxhGEdxhGEdxhGHce0tdoP03L30GgAAAAAAAAAAAAAAAAAA4FYfAlQIzb7JS1mpAAAAAElFTkSuQmCC"
+      alt="DigiSoul Logo"
+    />
 
-    .waitlist-button {
-      background-color: white;
-      color: #4a0072;
-      padding: 14px 28px;
-      font-size: 1em;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
+    <h1>DigiSoul</h1>
+    <div class="tagline">Rebuilding connection. One soul at a time.</div>
 
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      color: #aaa;
-    }
-  </style>
-</head>
-<body>
-  <div class="soulmist"></div>
-  <div class="logo-container">
-    <img src="digisoul-logo.png" alt="DigiSoul Logo" class="logo-glow" />
-  </div>
-  <h1>DigiSoul</h1>
-  <div class="taglines" id="tagline">Rebuilding connection. One soul at a time.</div>
-  <p class="description">
-    We’re building the next evolution of memory — where legacy becomes digital, emotion becomes presence, and you are never truly gone.
-  </p>
-  <a href="https://formspree.io/f/xdkzrvbz" class="waitlist-button">Join the Waitlist</a>
-  <footer>
-    <p>&copy; 2025 DigiSoul. All rights reserved.</p>
-  </footer>
+    <p>
+      We’re building the next evolution of memory — where legacy becomes
+      digital, emotion becomes presence, and you are never truly gone.
+    </p>
 
-  <script>
-    const taglines = [
-      "Rebuilding connection. One soul at a time.",
-      "Where memory becomes presence.",
-      "Never truly gone."
-    ];
-    let i = 0;
-    setInterval(() => {
-      document.getElementById('tagline').innerText = taglines[i % taglines.length];
-      i++;
-    }, 4000);
-  </script>
-</body>
+    <a
+      class="waitlist-btn"
+      href="https://formspree.io/f/xdkzrvbz"
+      target="_blank"
+      >Join the Waitlist</a
+    >
+
+    <footer>© 2025 DigiSoul. All rights reserved.</footer>
+  </body>
 </html>
