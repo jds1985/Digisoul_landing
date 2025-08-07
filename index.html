@@ -108,7 +108,15 @@
   </style>
 </head>
 <body>
-  <!-- PAGE CONTENT OMITTED FOR BREVITY -->  <script>
+  <header>
+    <img id="logo-img" src="logo.png" alt="DigiSoul Logo" class="logo" onclick="document.getElementById('logo-upload').click()" />
+    <input type="file" id="logo-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'logo-img', 'logo')" />
+    <h1>Where Memory Becomes Eternal.</h1>
+    <button class="cta-button">Join the Genesis Waitlist</button>
+    <div class="coming-soon">Coming Soon</div>
+  </header>  <!-- Your full body content would continue here... -->  <footer class="footer">
+    Powered by ZeoOS • © 2025 DigiSoul
+  </footer>  <script>
     window.onload = function () {
       const keys = ['chat', 'preserve', 'vault', 'jim', 'logo', 'step1', 'step2', 'step3', 'connect'];
       keys.forEach((key) => {
@@ -126,26 +134,34 @@
 
       const reader = new FileReader();
       reader.onload = function (e) {
-        const img = new Image();
-        img.onload = function () {
-          const canvas = document.createElement('canvas');
-          const maxWidth = 800;
-          const scale = maxWidth / img.width;
-          canvas.width = maxWidth;
-          canvas.height = img.height * scale;
-
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-          const dataURL = canvas.toDataURL('image/jpeg', 0.7);
-          document.getElementById(imgId).src = dataURL;
-          try {
-            localStorage.setItem('img_' + key, dataURL);
-          } catch (err) {
-            alert('Image too large to save. Please try a smaller one.');
-          }
-        };
-        img.src = e.target.result;
+        try {
+          const img = new Image();
+          img.onload = function () {
+            try {
+              const canvas = document.createElement('canvas');
+              const maxWidth = 800;
+              const scale = maxWidth / img.width;
+              canvas.width = maxWidth;
+              canvas.height = img.height * scale;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              const dataURL = canvas.toDataURL('image/jpeg', 0.7);
+              document.getElementById(imgId).src = dataURL;
+              localStorage.setItem('img_' + key, dataURL);
+            } catch (err) {
+              console.error('Canvas error:', err);
+              alert('Something went wrong rendering your image.');
+            }
+          };
+          img.src = e.target.result;
+        } catch (err) {
+          console.error('Image load error:', err);
+          alert('Failed to load image. Try a smaller file.');
+        }
+      };
+      reader.onerror = function () {
+        console.error('FileReader error');
+        alert('Failed to read file');
       };
       reader.readAsDataURL(file);
     }
