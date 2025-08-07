@@ -1,133 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DigiSoul Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DigiSoul – Where Memory Becomes Eternal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #240046, #3c096c);
-      color: white;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #2f0a50, #000);
+      color: #fff;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
       text-align: center;
+      padding: 2rem 1rem;
+    }
+    .logo {
+      max-width: 160px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .cta-button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: gold;
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .coming-soon {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    .features {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      padding: 3rem 0;
+    }
+    .features img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    .feature-caption {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .how-it-works {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .step {
+      max-width: 300px;
+    }
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .story {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+      align-items: center;
     }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
+    .story img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
     }
-
-    p.tagline {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 1em;
-    }
-
-    p.description {
-      max-width: 500px;
-      margin: 0 auto 2em;
-      font-size: 1em;
-      line-height: 1.5;
-    }
-
-    .waitlist-button {
-      background-color: white;
-      color: #3c096c;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1em;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-bottom: 2em;
-      transition: background-color 0.3s;
-    }
-
-    .waitlist-button:hover {
-      background-color: #f0f0f0;
-    }
-
-    #countdown {
-      font-size: 1.3em;
-      font-weight: bold;
-      margin-bottom: 2em;
-    }
-
     .footer {
-      margin-top: auto;
-      font-size: 0.9em;
-      opacity: 0.7;
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
     }
-
-    .sound-toggle {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      .waitlist-button {
-        padding: 12px 24px;
-        font-size: 0.95em;
+    @media (max-width: 768px) {
+      .features, .steps {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="sound-toggle" onclick="toggleSound()">🔇 Toggle Sound</div>
-
-  <h1>DigiSoul</h1>
-  <p class="tagline">Rebuilding connection. One soul at a time.</p>
-  <p class="description">
-    We’re building the next evolution of memory — where legacy becomes digital,
-    emotion becomes presence, and you are never truly gone.
-  </p>
-
-  <form action="https://formspree.io/f/xdkzrvbz" method="POST">
-    <button class="waitlist-button" type="submit">Join the Waitlist</button>
-  </form>
-
-  <div id="countdown">Launching in: ...</div>
-
-  <div class="footer">© 2025 DigiSoul. All rights reserved.</div>
-
-  <!-- Optional audio -->
-  <audio id="bg-audio" loop>
-    <source src="your-audio.mp3" type="audio/mp3">
-    Your browser does not support the audio tag.
-  </audio>
-
-  <script>
-    function toggleSound() {
-      const audio = document.getElementById('bg-audio');
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-
-    // Optional Countdown Setup (placeholder only)
-    // Replace this with real date logic later
-    const countdownEl = document.getElementById('countdown');
-    countdownEl.innerText = "Launching in: 30 days";
-  </script>
-
+  <header>
+    <img src="logo.png" alt="DigiSoul Logo" class="logo" />
+    <h1>Where Memory Becomes Eternal.</h1>
+    <button class="cta-button">Join the Genesis Waitlist</button>
+    <div class="coming-soon">Coming Soon</div>
+  </header>  <section class="container features">
+    <div>
+      <img src="chat-screen.png" alt="Chat Avatar Screen" />
+      <div class="feature-caption">Chat</div>
+    </div>
+    <div>
+      <img src="preserve-screen.png" alt="Preserve Memories Screen" />
+      <div class="feature-caption">Preserve</div>
+    </div>
+    <div>
+      <img src="vault-screen.png" alt="Vault Screen" />
+      <div class="feature-caption">Reconnect</div>
+    </div>
+  </section>  <section class="how-it-works container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">👤</div>
+        <h3>Create Your Avatar</h3>
+        <p>Upload voice, photos, and memories.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">♾️</div>
+        <h3>Train Its Soul</h3>
+        <p>Add stories, interactions, and emotions.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">📱</div>
+        <h3>Connect Anytime</h3>
+        <p>Chat, hear their voice, and revisit moments.</p>
+      </div>
+    </div>
+  </section>  <section class="container story">
+    <img src="jim-portrait.jpg" alt="Jim's Photo" />
+    <h2>Why I Created DigiSoul</h2>
+    <p>I was homeless, protecting my family, awake through the nights with no one to talk to but memories. In that stillness, I saw my father again — not as a ghost, but a possibility. DigiSoul was born from that moment. It’s a way to preserve the ones we love. To never say goodbye before we’re ready. To give memory a voice.</p>
+  </section>  <footer class="footer">
+    Powered by ZeoOS • © 2025 DigiSoul
+  </footer>
 </body>
 </html>
