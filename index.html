@@ -140,6 +140,8 @@
         <input type="file" id="step3-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'step3-img', 'step3')" />
         <h3>Connect Anytime</h3>
         <p>Chat, hear their voice, and revisit moments.</p>
+        <img id="connect-img" src="connect.png" alt="Connect Device Image" style="margin-top: 1rem; max-width: 100%; border-radius: 12px; cursor: pointer;" onclick="document.getElementById('connect-upload').click()" />
+        <input type="file" id="connect-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'connect-img', 'connect')" />
       </div>
     </div>
   </section>  <section class="container story">
@@ -151,7 +153,7 @@
     Powered by ZeoOS • © 2025 DigiSoul
   </footer>  <script>
     window.onload = function () {
-      const keys = ['chat', 'preserve', 'vault', 'jim', 'logo', 'step1', 'step2', 'step3'];
+      const keys = ['chat', 'preserve', 'vault', 'jim', 'logo', 'step1', 'step2', 'step3', 'connect'];
       keys.forEach((key) => {
         const saved = localStorage.getItem('img_' + key);
         if (saved) {
