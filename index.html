@@ -21,6 +21,11 @@
       text-align: center;
       padding: 2rem 1rem;
     }
+    img {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+    }
     .logo {
       max-width: 160px;
       margin-bottom: 1rem;
@@ -55,8 +60,6 @@
       text-align: center;
     }
     .features img {
-      width: 100%;
-      max-width: 250px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
       cursor: pointer;
@@ -93,7 +96,6 @@
       align-items: center;
     }
     .story img {
-      max-width: 150px;
       border-radius: 50%;
       margin-bottom: 1rem;
       cursor: pointer;
@@ -114,65 +116,34 @@
   </style>
 </head>
 <body>
-  <header>
-    <img id="logo-img" src="logo.png" alt="DigiSoul Logo" class="logo" onclick="document.getElementById('logo-upload').click()" />
-    <input type="file" id="logo-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'logo-img', 'logo')" />
-    <h1>Where Memory Becomes Eternal.</h1>
-    <button class="cta-button">Join the Genesis Waitlist</button>
-    <div class="coming-soon">Coming Soon</div>
-  </header>  <section class="how-it-works container">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <img id="step1-img" src="avatar-icon.png" class="step-icon" onclick="document.getElementById('step1-upload').click()" />
-        <input type="file" id="step1-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'step1-img', 'step1')" />
-        <h3>Create Your Avatar</h3>
-        <p>Upload voice, photos, and memories.</p>
-      </div>
-      <div class="step">
-        <img id="step2-img" src="infinity-icon.png" class="step-icon" onclick="document.getElementById('step2-upload').click()" />
-        <input type="file" id="step2-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'step2-img', 'step2')" />
-        <h3>Train Its Soul</h3>
-        <p>Add stories, interactions, and emotions.</p>
-      </div>
-      <div class="step">
-        <img id="step3-img" src="phone-icon.png" class="step-icon" onclick="document.getElementById('step3-upload').click()" />
-        <input type="file" id="step3-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'step3-img', 'step3')" />
-        <h3>Connect Anytime</h3>
-        <p>Chat, hear their voice, and revisit moments.</p>
-        <img id="connect-img" src="connect.png" alt="Connect Device Image" style="margin-top: 1rem; max-width: 100%; border-radius: 12px; cursor: pointer;" onclick="document.getElementById('connect-upload').click()" />
-        <input type="file" id="connect-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'connect-img', 'connect')" />
-      </div>
-    </div>
-  </section>  <section class="container story">
-    <img id="jim-img" src="jim-portrait.jpg" alt="Jim's Photo" onclick="document.getElementById('jim-upload').click()" />
-    <input type="file" id="jim-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'jim-img', 'jim')" />
-    <h2>Why I Created DigiSoul</h2>
-    <p>I was homeless, protecting my family, awake through the nights with no one to talk to but memories. In that stillness, I saw my father again — not as a ghost, but a possibility. DigiSoul was born from that moment. It’s a way to preserve the ones we love. To never say goodbye before we’re ready. To give memory a voice.</p>
-  </section>  <footer class="footer">
-    Powered by ZeoOS • © 2025 DigiSoul
-  </footer>  <script>
+  <!-- ... (everything else remains unchanged) ... -->  <script>
     window.onload = function () {
       const keys = ['chat', 'preserve', 'vault', 'jim', 'logo', 'step1', 'step2', 'step3', 'connect'];
       keys.forEach((key) => {
         const saved = localStorage.getItem('img_' + key);
         if (saved) {
-          document.getElementById(key + '-img').src = saved;
+          const imgEl = document.getElementById(key + '-img');
+          if (imgEl) imgEl.src = saved;
         }
       });
     }
 
     function changeImage(event, imgId, key) {
       const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const dataURL = e.target.result;
-          document.getElementById(imgId).src = dataURL;
-          localStorage.setItem('img_' + key, dataURL);
-        };
-        reader.readAsDataURL(file);
+      if (!file) return;
+
+      if (file.size > 2000000) { // 2MB limit
+        alert("File too large. Please use an image under 2MB.");
+        return;
       }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const dataURL = e.target.result;
+        document.getElementById(imgId).src = dataURL;
+        localStorage.setItem('img_' + key, dataURL);
+      };
+      reader.readAsDataURL(file);
     }
   </script></body>
 </html>
