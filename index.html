@@ -120,17 +120,17 @@
   </header>  <section class="container features">
     <div class="feature">
       <img id="chat-img" src="chat-screen.png" alt="Chat Avatar Screen" onclick="document.getElementById('chat-upload').click()" />
-      <input type="file" id="chat-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'chat-img')" />
+      <input type="file" id="chat-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'chat-img', 'chat')" />
       <div class="feature-caption">Chat</div>
     </div>
     <div class="feature">
       <img id="preserve-img" src="preserve-screen.png" alt="Preserve Memories Screen" onclick="document.getElementById('preserve-upload').click()" />
-      <input type="file" id="preserve-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'preserve-img')" />
+      <input type="file" id="preserve-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'preserve-img', 'preserve')" />
       <div class="feature-caption">Preserve</div>
     </div>
     <div class="feature">
       <img id="vault-img" src="vault-screen.png" alt="Vault Screen" onclick="document.getElementById('vault-upload').click()" />
-      <input type="file" id="vault-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'vault-img')" />
+      <input type="file" id="vault-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'vault-img', 'vault')" />
       <div class="feature-caption">Reconnect</div>
     </div>
   </section>  <section class="how-it-works container">
@@ -154,18 +154,30 @@
     </div>
   </section>  <section class="container story">
     <img id="jim-img" src="jim-portrait.jpg" alt="Jim's Photo" onclick="document.getElementById('jim-upload').click()" />
-    <input type="file" id="jim-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'jim-img')" />
+    <input type="file" id="jim-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'jim-img', 'jim')" />
     <h2>Why I Created DigiSoul</h2>
     <p>I was homeless, protecting my family, awake through the nights with no one to talk to but memories. In that stillness, I saw my father again — not as a ghost, but a possibility. DigiSoul was born from that moment. It’s a way to preserve the ones we love. To never say goodbye before we’re ready. To give memory a voice.</p>
   </section>  <footer class="footer">
     Powered by ZeoOS • © 2025 DigiSoul
   </footer>  <script>
-    function changeImage(event, imgId) {
+    window.onload = function () {
+      const keys = ['chat', 'preserve', 'vault', 'jim'];
+      keys.forEach((key) => {
+        const saved = localStorage.getItem('img_' + key);
+        if (saved) {
+          document.getElementById(key + '-img').src = saved;
+        }
+      });
+    }
+
+    function changeImage(event, imgId, key) {
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
-          document.getElementById(imgId).src = e.target.result;
+          const dataURL = e.target.result;
+          document.getElementById(imgId).src = dataURL;
+          localStorage.setItem('img_' + key, dataURL);
         };
         reader.readAsDataURL(file);
       }
