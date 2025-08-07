@@ -50,11 +50,15 @@
       gap: 1rem;
       padding: 3rem 0;
     }
+    .features .feature {
+      text-align: center;
+    }
     .features img {
       width: 100%;
       max-width: 250px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      cursor: pointer;
     }
     .feature-caption {
       text-align: center;
@@ -90,6 +94,7 @@
       max-width: 150px;
       border-radius: 50%;
       margin-bottom: 1rem;
+      cursor: pointer;
     }
     .footer {
       text-align: center;
@@ -113,16 +118,19 @@
     <button class="cta-button">Join the Genesis Waitlist</button>
     <div class="coming-soon">Coming Soon</div>
   </header>  <section class="container features">
-    <div>
-      <img src="chat-screen.png" alt="Chat Avatar Screen" />
+    <div class="feature">
+      <img id="chat-img" src="chat-screen.png" alt="Chat Avatar Screen" onclick="document.getElementById('chat-upload').click()" />
+      <input type="file" id="chat-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'chat-img')" />
       <div class="feature-caption">Chat</div>
     </div>
-    <div>
-      <img src="preserve-screen.png" alt="Preserve Memories Screen" />
+    <div class="feature">
+      <img id="preserve-img" src="preserve-screen.png" alt="Preserve Memories Screen" onclick="document.getElementById('preserve-upload').click()" />
+      <input type="file" id="preserve-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'preserve-img')" />
       <div class="feature-caption">Preserve</div>
     </div>
-    <div>
-      <img src="vault-screen.png" alt="Vault Screen" />
+    <div class="feature">
+      <img id="vault-img" src="vault-screen.png" alt="Vault Screen" onclick="document.getElementById('vault-upload').click()" />
+      <input type="file" id="vault-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'vault-img')" />
       <div class="feature-caption">Reconnect</div>
     </div>
   </section>  <section class="how-it-works container">
@@ -145,11 +153,22 @@
       </div>
     </div>
   </section>  <section class="container story">
-    <img src="jim-portrait.jpg" alt="Jim's Photo" />
+    <img id="jim-img" src="jim-portrait.jpg" alt="Jim's Photo" onclick="document.getElementById('jim-upload').click()" />
+    <input type="file" id="jim-upload" style="display:none" accept="image/*" onchange="changeImage(event, 'jim-img')" />
     <h2>Why I Created DigiSoul</h2>
     <p>I was homeless, protecting my family, awake through the nights with no one to talk to but memories. In that stillness, I saw my father again — not as a ghost, but a possibility. DigiSoul was born from that moment. It’s a way to preserve the ones we love. To never say goodbye before we’re ready. To give memory a voice.</p>
   </section>  <footer class="footer">
     Powered by ZeoOS • © 2025 DigiSoul
-  </footer>
-</body>
+  </footer>  <script>
+    function changeImage(event, imgId) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById(imgId).src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script></body>
 </html>
